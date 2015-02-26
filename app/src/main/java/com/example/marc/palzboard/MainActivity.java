@@ -15,6 +15,7 @@ import android.widget.Toast;
 public class MainActivity extends ActionBarActivity {
 
     public CheckBox schleif;
+
     public MediaPlayer mp = null;
 
     @Override
@@ -37,6 +38,10 @@ public class MainActivity extends ActionBarActivity {
         schleif.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                if(mp == null ||  !mp.isPlaying()) {
+                    return;
+                }
+
                 if(isChecked) {
                     mp.setLooping(true);
                 } else {
